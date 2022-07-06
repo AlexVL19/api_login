@@ -28,15 +28,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $userobj = new User();
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
-        $userobj->name = $request->name;
-        $userobj->email = $request->email;
-        $userobj->password = $request->password;
-
-        $userobj->save();
+        $userobj = User::create($request->all());
+        return $userobj;
     }
 
+    /**
+    * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function show($id)
+    {
+        $userobj = User::find($id);
+
+        return $userobj;
+    }
 
     /**
      * Update the specified resource in storage.
@@ -45,15 +58,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $userobj = User::findOrFail($request->id);
-
-        $userobj->name = $request->name;
-        $userobj->email = $request->email;
-        $userobj->password = $request->password;
-
-        $userobj->save();
+        $userobj = User::find($id);
+        $userobj->update($request->all());
 
         return $userobj;
     }
@@ -65,9 +73,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $userobj = User::destroy($request->id);
+        $userobj = User::destroy($id);
         return $userobj;
     }
 }
