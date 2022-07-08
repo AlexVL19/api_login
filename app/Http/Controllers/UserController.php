@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     
     /**
-     * Display a listing of the resource.
+     * Muestra todos los elementos presentes en la base de datos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,13 +21,14 @@ class UserController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Crea un nuevo elemento y lo almacena en la base de datos.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //Validaciones que nos permitirán si estos datos existen
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -39,7 +40,7 @@ class UserController extends Controller
     }
 
     /**
-    * Display the specified resource.
+    * Muestra un elemento específico llamándolo desde su ID.
     *
     * @param  int  $id
     * @return \Illuminate\Http\Response
@@ -52,7 +53,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza un elemento específico llamándolo desde su ID.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -68,7 +69,7 @@ class UserController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * Borra el elemento de la base de datos llamándolo desde su ID.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -16,7 +16,8 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-    //Rutas públicas
+    /*Rutas públicas, algunas que fueron protegidas se pasaron acá para hacer
+    pruebas pertinentes de API*/ 
     
 Route::post('/register', [AuthController::class, 'registrar']);
 
@@ -26,17 +27,17 @@ Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/users/{id}', [UserController::class, 'show']);
 
-    //Rutas protegidas por Sanctum
+Route::post('/users', [UserController::class, 'store']);
+
+Route::put('/users/{id}', [UserController::class, 'update']);
+
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+
+    //Rutas protegidas por Sanctum, están en público debido a que se encuentra en pruebas
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
-    Route::post('/users', [UserController::class, 'store']);
-
-    Route::put('/users/{id}', [UserController::class, 'update']);
-
-    Route::delete('/users/{id}', [UserController::class, 'destroy']);
-
-    Route::post('/logout', [AuthController::class, 'logout']);
-
 
 });
