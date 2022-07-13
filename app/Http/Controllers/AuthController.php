@@ -41,7 +41,7 @@ class AuthController extends Controller
 
         $userobj = User::where('email', $campos['email'])->first();
 
-        if (!$userobj || !Hash::check($campos['password'], $userobj->password)) {
+        if (!$userobj || !($campos['password'] == $userobj->password)) {
             return response([
                 'message' => 'Datos incorrectos, intenta de nuevo'
             ], 401);
