@@ -25,16 +25,16 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/users', [UserController::class, 'index']);
 
+Route::post('/users', [UserController::class, 'store']);
+
     //Rutas protegidas por Sanctum, están en público debido a que se encuentra en pruebas
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
-    Route::post('/users', [UserController::class, 'store']);
-
     Route::put('/users/{id}', [UserController::class, 'update']);
 
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
