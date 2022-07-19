@@ -3,8 +3,6 @@
 [ESP]
 Esta API de autenticación está construido en Laravel y Vue, y contiene las siguientes características:
 
-- Los usuarios tienen roles, administrador y usuario
-
 - El usuario deberá comprobar sus credenciales, siendo estas el documento y su contraseña.
 
 - Dependiendo del rol, deberá enviar a una diferente página en conjunto con el nombre del usuario y su rol.
@@ -13,8 +11,6 @@ Esta API de autenticación está construido en Laravel y Vue, y contiene las sig
 
 [ENG]
 This authentication API is built on Laravel and Vue, and contains the following features:
-
-- Users have roles: admin and user.
 
 - User must check their credentials, being these their document and password.
 
